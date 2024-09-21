@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lens Analysis</title>
+</head>
+<body>
+    <h1>Lens Analysis</h1>
+    <form action="{{ url_for('lens_analysis') }}" method="POST" enctype="multipart/form-data">
+        <label for="food_image">Upload Food Image:</label>
+        <input type="file" id="food_image" name="file" accept="image/*" required>
+        <br>
+        <input type="submit" value="Analyze">
+    </form>
+    <div id="analysis_result"></div>
+    <a href="{{ url_for('dashboard') }}">Back to Dashboard</a>
+
+    <script>
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            var formData = new FormData(this);
+            fetch('{{ url_for("lens_analysis") }}', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('analysis_result').innerHTML = JSON.stringify(data, null, 2);
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    </script>
+</body>
+</html>

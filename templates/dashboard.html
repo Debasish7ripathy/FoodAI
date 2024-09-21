@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+</head>
+<body>
+    <h1>Welcome, {{ user.username }}!</h1>
+    <nav>
+        <a href="{{ url_for('pantry') }}">Pantry</a>
+        <a href="{{ url_for('daily_menu') }}">Daily Menu</a>
+        <a href="{{ url_for('lens_analysis') }}">Lens Analysis</a>
+        <a href="{{ url_for('health_assistant') }}">Health Assistant</a>
+    </nav>
+    <h2>Your Information</h2>
+    <p>Credits: {{ user.credits }}</p>
+    <p>Health Condition: {{ user.medical_condition }}</p>
+    <p>Diet: {{ user.diet }}</p>
+</body>
+</html>

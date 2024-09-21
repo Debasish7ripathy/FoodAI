@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pantry</title>
+</head>
+<body>
+    <h1>Your Pantry</h1>
+    <table>
+        <tr>
+            <th>Food Item</th>
+            <th>Quantity</th>
+            <th>Energy Value</th>
+            <th>Protein</th>
+            <th>Carbs</th>
+            <th>Fat</th>
+            <th>Expiry Date</th>
+            <th>Health Rate</th>
+        </tr>
+        {% for item in items %}
+        <tr>
+            <td>{{ item.food_item }}</td>
+            <td>{{ item.quantity }}</td>
+            <td>{{ item.energy_value }}</td>
+            <td>{{ item.protein }}</td>
+            <td>{{ item.carbs }}</td>
+            <td>{{ item.fat }}</td>
+            <td>{{ item.expiry_date }}</td>
+            <td>{{ item.health_rate }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <h2>Add New Item</h2>
+    <form action="{{ url_for('add_pantry_item') }}" method="POST">
+        <label for="food_item">Food Item:</label>
+        <input type="text" id="food_item" name="food_item" required>
+        <br>
+        <label for="quantity">Quantity:</label>
+        <input type="number" id="quantity" name="quantity" required>
+        <br>
+        <input type="submit" value="Add Item">
+    </form>
+    <a href="{{ url_for('dashboard') }}">Back to Dashboard</a>
+</body>
+</html>

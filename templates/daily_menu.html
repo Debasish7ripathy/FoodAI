@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Menu</title>
+</head>
+<body>
+    <h1>Your Daily Menu</h1>
+    <table>
+        <tr>
+            <th>Food Name</th>
+            <th>Ingredients</th>
+            <th>Energy Value</th>
+            <th>Protein</th>
+            <th>Fat</th>
+            <th>Remaining Calories</th>
+        </tr>
+        {% for item in menu_items %}
+        <tr>
+            <td>{{ item.food_name }}</td>
+            <td>{{ item.ingredient_list }}</td>
+            <td>{{ item.energy_value }}</td>
+            <td>{{ item.protein }}</td>
+            <td>{{ item.fat }}</td>
+            <td>{{ item.remaining_calories }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="{{ url_for('dashboard') }}">Back to Dashboard</a>
+</body>
+</html>
